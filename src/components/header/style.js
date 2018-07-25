@@ -22,6 +22,10 @@ export const HeaderWrapper = styled.div`
       .logo{
           float:left;
           height:100%;
+          img{
+              width:100px;
+              height:56px;
+          }
       }
       .other{
           float:right;
