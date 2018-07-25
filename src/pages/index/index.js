@@ -4,6 +4,7 @@ import CarouselComponent from "../../components/carousel";
 import {IndexWrapper} from "./style";
 import  CollectionComponent from "./components/collection";
 import {Link} from 'react-router-dom';
+
 class App extends Component{
   
   render(){

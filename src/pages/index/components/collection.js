@@ -1,6 +1,6 @@
 import React ,{Component} from "react";
 import {CollectionWrapper} from "../style";
-
+import {connect} from "react-redux"; 
 class CollectionComponent extends Component{
   
   render(){
@@ -49,4 +49,19 @@ class CollectionComponent extends Component{
 
 }
 
-export default CollectionComponent;
+const mapStateToProps = function(state) {
+    
+    return {
+
+     }
+  
+}
+
+const mapDispatchToProps = {
+    addTodo,
+    deleteTodo
+  }
+  
+
+export default connect(null, null)(CollectionComponent);
+
