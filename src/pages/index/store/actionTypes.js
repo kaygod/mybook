@@ -1,0 +1,1 @@
+export const GET_COLLECTIONS="getAllCollection";//获取所有热门专题
