@@ -4,6 +4,8 @@ import CarouselComponent from "../../components/carousel";
 import {IndexWrapper} from "./style";
 import  CollectionComponent from "./components/collection";
 import {Link} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class App extends Component{
   
@@ -37,4 +39,14 @@ class App extends Component{
 
 }
 
-export default App;
+const mapState = (state) => ({
+	
+});
+
+const mapDispatch = (dispatch) => ({
+	getDetail(id) {
+	
+	}
+});
+
+export default connect(null, null)(App);
