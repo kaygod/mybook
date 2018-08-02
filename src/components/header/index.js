@@ -21,7 +21,7 @@ class HeaderComponent extends Component{
                        </div>
                    </div>
                    <div className="logo">
-                      <img src="https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png"/>
+                      <img src="./img/12.png"/>
                    </div>
                    <div className="other">
                       <div>注册</div>
