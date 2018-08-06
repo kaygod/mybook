@@ -10,7 +10,7 @@ class HeaderComponent extends Component{
                    <div className="mainContent">
                        <div className="lt">
                           <ul>
-                              <li>首页</li>
+                              <li><i className="iconfont">&#xe69b;</i>首页</li>
                               <li>下载APP</li>
                               <li>搜索</li>  
                           </ul>
