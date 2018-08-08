@@ -51,5 +51,12 @@ table {
 .gt{
     float:right;
 }
+.clear
+{
+    clear:both;
+    float: none !important;
+    height:0px !important;
+    width:0px !important;
+}
 
 `;
