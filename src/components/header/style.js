@@ -19,7 +19,7 @@ export const HeaderWrapper = styled.div`
           width:960px;
           margin:0px auto;
           .left-section{
-              li{
+              >li{
                   float:left;
                   margin-right: 10px;
                   >a{
@@ -45,6 +45,18 @@ export const HeaderWrapper = styled.div`
               .search{
                 position: relative;
                 top: 9px;
+                 &.active{
+                    input{
+                        width:320px;
+                    } 
+                    >a{
+                        border-radius:50%;
+                        background-color:#969696;
+                        i{
+                            color:#fff;
+                        }
+                    } 
+                 }
                  .search-input{
                     padding: 0 40px 0 20px;
                     width: 240px;
@@ -53,10 +65,10 @@ export const HeaderWrapper = styled.div`
                     border: 1px solid #eee;
                     border-radius: 40px;
                     background: #eee;
-                    transition: width .5s;
-                    -moz-transition: width .5s;
-                    -webkit-transition: width .5s;
-                    -o-transition: width .5s;
+                    transition: width .25s;
+                    -moz-transition: width .25s;
+                    -webkit-transition: width .25s;
+                    -o-transition: width .25s;
                     transition-delay: .1s;
                     -moz-transition-delay: .1s;
                     -webkit-transition-delay: .1s;
@@ -64,7 +76,7 @@ export const HeaderWrapper = styled.div`
                     box-sizing:border-box;
                     outline:none;
                  }
-                 a{
+                 >a{
                     position: absolute;
                     top: 4px;
                     right: 5px;
@@ -78,21 +90,26 @@ export const HeaderWrapper = styled.div`
                         margin: 7px -1px 0 0;
                         display: block;
                     }
-                    &.active{
-                        border-radius:50%;
-                        background-color:#969696;
-                        i{
-                            color:#fff;
-                        }
-                    }
                  }
                  #navbar-search-tips{
+                    &:before{
+                        content: "";
+                        left: 27px;
+                        top: -7px;
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                        border-left: 8px solid transparent;
+                        border-right: 8px solid transparent;
+                        border-bottom: 7px solid #fff;
+                    } 
                     margin-top: 9px;
                     width: 250px;
                     left: 0;
                     top: 100%;
-                    visibility: hidden;
-                    opacity: 0;
+                    position: absolute;
+                    background-color: #fff;
+                    box-shadow: 0 0 8px rgba(0,0,0,.2);
                     border-radius: 4px;
                     box-sizing: border-box;
                     .search-trending {
@@ -121,7 +138,7 @@ export const HeaderWrapper = styled.div`
                                 }
                             }
                         }
-                        .search-trending .search-trending-tag-wrap {
+                        .search-trending-tag-wrap {
                             font-size: 0;
                             li {
                                 margin-right: 10px;
@@ -138,11 +155,6 @@ export const HeaderWrapper = styled.div`
                         }
                     }
                  }
-                 #navbar-search-tips:before {
-                    position: absolute;
-                    background-color: #fff;
-                    box-shadow: 0 0 8px rgba(0,0,0,.2);
-                }
               }
           }
           .right-section{

@@ -2,6 +2,24 @@ import React , {Component} from "react";
 import {HeaderWrapper} from "./style";
 
 class HeaderComponent extends Component{
+
+    constructor(props){
+      super(props);
+      this.state={
+          isFocus:2 //1表示input框聚焦了 2表示失去了焦点
+      }
+      this.handleClick= this.handleClick.bind(this);
+    }
+
+    handleClick(type){
+        this.setState((prevState, props) => {
+            if(type!=prevState.isFocus){
+               return {
+                isFocus:type
+               }
+            }
+        });
+    }
   
     render(){
        return (
@@ -13,8 +31,8 @@ class HeaderComponent extends Component{
                               <li className="current"><a><i className="iconfont">&#xe69b;</i>首页</a></li>
                               <li><a><i className="iconfont">&#xe6f0;</i>下载APP</a></li>
                               <li>
-                                   <form className="search">
-                                       <input type="text" placeholder="搜索" className="search-input"/>
+                                   <form className={this.state.isFocus==2?"search":"search active"}>
+                                       <input type="text" onFocus={()=>{this.handleClick(1)}} onBlur={()=>{this.handleClick(2)}} placeholder="搜索" className="search-input"/>
                                         <a>
                                              <i className="iconfont">&#xe625;</i>
                                         </a>
@@ -22,9 +40,33 @@ class HeaderComponent extends Component{
                                           <div className="search-trending">
                                              <div className="search-trending-header clearfix">
                                                <span>热门搜索</span> 
-                                               <a><i className="iconfont ic-search-change"></i> 换一批</a>
+                                               <a><i className="iconfont ic-search-change">&#xe64e;</i> 换一批</a>
                                              </div> 
                                              <ul className="search-trending-tag-wrap">
+                                                <li>
+                                                    <a target="_blank">区块链</a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank">小程序</a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank">区块链</a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank">小程序</a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank">区块链</a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank">小程序</a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank">区块链</a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank">小程序</a>
+                                                </li>
                                                 <li>
                                                     <a target="_blank">区块链</a>
                                                 </li>
@@ -35,7 +77,8 @@ class HeaderComponent extends Component{
                                           </div>
                                         </div>
                                    </form>
-                              </li>  
+                              </li>
+                              <li className="clear"></li>  
                           </ul>
                        </div>
                        <div className="gt right-section">
