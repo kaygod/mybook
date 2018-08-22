@@ -8,8 +8,8 @@ const defaultState = fromJS({
 
 export default (state = defaultState, action) => {
      
-    switch(action.type){
-      case constans.GET_COLLECTIONS: 
+    switch(action.type){  
+      case constans.GET_KEYWORDS:
           return state.set("list",action.value);break;
       default: return state; 
     }

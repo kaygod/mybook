@@ -1,0 +1,1 @@
+export const GET_KEYWORDS="getAllKeywords";//获取所有热词

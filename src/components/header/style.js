@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled.div`;
    
       &.wapper{
           
@@ -137,6 +137,9 @@ export const HeaderWrapper = styled.div`
                                     transition: .5s ease;
                                 }
                             }
+                            .hand{
+                                cursor:pointer;
+                            }
                         }
                         .search-trending-tag-wrap {
                             font-size: 0;
@@ -236,7 +239,22 @@ export const HeaderWrapper = styled.div`
               background-color: #ea6f5a;
           } 
       }
-      
+
+      .rotate{
+        transition: transform 250ms linear;
+      }
+      .rotate-enter-active {
+        transform: rotate(${(props) => props.degree+"deg"});
+      }
+      .rotate-enter-done {
+        transform: rotate(${(props) => props.degree-0+360+"deg"});
+      }
+      .rotate-exit-active {
+        transform: rotate(${(props) => props.degree+"deg"});
+      }
+      .rotate-exit-done {
+        transform: rotate(${(props) => props.degree-0+360+"deg"});
+      }
 
 `;
 

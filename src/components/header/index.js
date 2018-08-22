@@ -1,14 +1,23 @@
 import React , {Component} from "react";
 import {HeaderWrapper} from "./style";
+import { CSSTransition } from 'react-transition-group';
+import {connect} from "react-redux";
+import {getKeyWords} from "./store/actions"; 
 
 class HeaderComponent extends Component{
 
     constructor(props){
       super(props);
       this.state={
-          isFocus:2 //1表示input框聚焦了 2表示失去了焦点
+          isFocus:2,//1表示input框聚焦了 2表示失去了焦点
+          isInner:false,//false 鼠标没有处于热门搜索框 true鼠标处于热门搜索框
+          rotating:false,//旋转的状态
+          degree:0,
+          curpage:1,
+          size:10//每页显示多少个
       }
       this.handleClick= this.handleClick.bind(this);
+      this.update= this.update.bind(this);
     }
 
     handleClick(type){
@@ -20,10 +29,83 @@ class HeaderComponent extends Component{
             }
         });
     }
-  
+
+    changeInnerState(flag){//改变isInner状态
+      this.setState({
+        isInner:flag  
+      })
+    }
+
+    update(){//换一批
+        var totalpage=Math.ceil(this.props.list.size/this.state.size);
+        this.setState((prevState)=>{
+            var page=prevState.curpage+1;
+            if(prevState.curpage==totalpage){
+              page=1;
+            }
+            return {
+                curpage:page,
+                rotating:!prevState.rotating,
+                degree:prevState.degree+360
+            }     
+        });
+    }
+
+    toggleSearchWord(){//切换热门搜索词
+      if(this.state.isInner || this.state.isFocus==1){
+        const {list} =this.props;
+        return (
+            <div id="navbar-search-tips" onMouseEnter={()=>{this.changeInnerState(true)}} onMouseLeave={()=>{this.changeInnerState(false)}}>
+            <div className="search-trending">
+               <div className="search-trending-header clearfix">
+                 <span>热门搜索</span> 
+                 <a className="hand" onClick={this.update}>
+                 <CSSTransition
+                    in={this.state.rotating == true}
+                    timeout={250}
+                    classNames="rotate"          
+                    onExited={() => {
+                        this.setState({
+                            rotating: false
+                        });
+                    }} 
+                  > 
+                     <i className="iconfont ic-search-change">&#xe64e;</i>
+                  </CSSTransition>
+                  &nbsp;换一批</a>
+               </div> 
+               <ul className="search-trending-tag-wrap">
+                 {this.renderList(list)}              
+              </ul>
+            </div>
+           </div>
+          );
+
+      }else{
+        return null;
+      }
+    }
+
+    renderList(list){
+       var size=this.state.size; 
+       var startIndex=(this.state.curpage-1)*size;
+       var keyword=list.slice(startIndex,startIndex+size);
+       return keyword.map((item)=>{
+            return (
+                <li key={item.get("id")}>
+                  <a target="_blank">{item.get("name")}</a>
+                </li>
+            )
+         })
+    }
+
+    componentDidMount(){
+        this.props.renderKeyWord();
+    }
+    
     render(){
        return (
-        <HeaderWrapper className="wapper">
+        <HeaderWrapper className="wapper"  degree={this.state.degree}>
             <div className="width-limit">
                    <div className="mainContent">
                        <div className="lt">
@@ -36,46 +118,7 @@ class HeaderComponent extends Component{
                                         <a>
                                              <i className="iconfont">&#xe625;</i>
                                         </a>
-                                        <div id="navbar-search-tips">
-                                          <div className="search-trending">
-                                             <div className="search-trending-header clearfix">
-                                               <span>热门搜索</span> 
-                                               <a><i className="iconfont ic-search-change">&#xe64e;</i> 换一批</a>
-                                             </div> 
-                                             <ul className="search-trending-tag-wrap">
-                                                <li>
-                                                    <a target="_blank">区块链</a>
-                                                </li>
-                                                <li>
-                                                    <a target="_blank">小程序</a>
-                                                </li>
-                                                <li>
-                                                    <a target="_blank">区块链</a>
-                                                </li>
-                                                <li>
-                                                    <a target="_blank">小程序</a>
-                                                </li>
-                                                <li>
-                                                    <a target="_blank">区块链</a>
-                                                </li>
-                                                <li>
-                                                    <a target="_blank">小程序</a>
-                                                </li>
-                                                <li>
-                                                    <a target="_blank">区块链</a>
-                                                </li>
-                                                <li>
-                                                    <a target="_blank">小程序</a>
-                                                </li>
-                                                <li>
-                                                    <a target="_blank">区块链</a>
-                                                </li>
-                                                <li>
-                                                    <a target="_blank">小程序</a>
-                                                </li>
-                                            </ul>
-                                          </div>
-                                        </div>
+                                        {this.toggleSearchWord()}
                                    </form>
                               </li>
                               <li className="clear"></li>  
@@ -103,4 +146,14 @@ class HeaderComponent extends Component{
 
 }
 
-export default HeaderComponent;
+const mapState = (state) => ({
+	list: state.getIn(['keyword','list'])
+})
+
+const mapDispatch = (dispatch) => ({
+	renderKeyWord(){
+         dispatch(getKeyWords());
+    }
+})
+
+export default connect(mapState, mapDispatch)(HeaderComponent);
