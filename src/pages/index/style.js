@@ -56,3 +56,86 @@ export const CollectionWrapper = styled.div`
     }
       
 `;
+
+export const NoteListWapper = styled.div`
+  
+    .note-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        .have-img {
+            min-height: 140px;
+            >div {
+                padding-right: 140px;
+            }
+        }
+        li {
+            position: relative;
+            width: 100%;
+            margin: 0 0 15px;
+            padding: 15px 2px 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+            word-wrap: break-word;
+            .wrap-img {
+                position: absolute;
+                top: 50%;
+                margin-top: -60px;
+                right: 0;
+                width: 125px;
+                height: 100px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 4px;
+                    border: 1px solid #f0f0f0;
+                }
+            }
+        }
+        .abstract {
+            margin: 0 0 8px;
+            font-size: 13px;
+            line-height: 24px;
+            color: #999;
+        }
+        .title {
+            margin: -7px 0 4px;
+            display: inherit;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+        .meta {
+            padding-right: 0!important;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 20px;
+            a {
+                margin-right: 10px;
+                color: #b4b4b4;
+            }
+            span {
+                margin-right: 10px;
+                color: #b4b4b4;
+            }
+            i{
+                font-size:14px;
+            }
+        }
+    }
+`;
+
+export const BoardWapper = styled.div`
+   .board {
+    margin-top: -4px;
+    padding-bottom: 4px;
+    min-height: 228px;
+    
+    img {
+        width: 100%;
+        min-height: 50px;
+        margin-bottom: 6px;
+        border-radius: 4px;
+    }
+
+  }
+`;

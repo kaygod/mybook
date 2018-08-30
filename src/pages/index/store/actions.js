@@ -22,3 +22,37 @@ export const getCollections=()=>{
 
 }
 
+
+const nodeListType=(data)=>({
+    type:constans.GET_NOTELIST,
+    value:fromJS(data.data)
+})
+
+export const getNodeList=()=>{
+    return (dispatch)=>{
+        
+        axios.get("./data/nodelist.json").then((data)=>{ 
+            dispatch(nodeListType(data));  
+        }).catch(function (error) {
+            console.log(error);
+        })
+    
+    }
+}
+
+const boardListType=(data)=>({
+    type:constans.GET_BOARDLIST,
+    value:fromJS(data.data)
+})
+
+export const getBoardList=()=>{
+    return (dispatch)=>{
+        
+        axios.get("./data/board.json").then((data)=>{ 
+            dispatch(boardListType(data));  
+        }).catch(function (error) {
+            console.log(error);
+        })
+    
+    }
+}

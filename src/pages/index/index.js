@@ -3,6 +3,8 @@ import HeaderComponent from "../../components/header";
 import CarouselComponent from "../../components/carousel";
 import {IndexWrapper} from "./style";
 import  CollectionComponent from "./components/collection";
+import NodeListComponent from "./components/nodelist";
+import BoardComponent from "./components/board";
 import {Link} from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -21,6 +23,13 @@ class App extends Component{
                   
                 <div className="margin40">
                   <CollectionComponent/>        
+                </div>
+                
+                {/*渲染列表数据*/}
+                <div>
+                    
+                 <NodeListComponent/>
+                
                 </div> 
                 
                     
@@ -28,8 +37,9 @@ class App extends Component{
                 </div>
 
                 <div className="gt">
-                
-                
+                  
+                <BoardComponent></BoardComponent>
+
                 </div>
 
             </div>                

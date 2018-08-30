@@ -58,5 +58,14 @@ table {
     height:0px !important;
     width:0px !important;
 }
-
+a {
+	color: #333;
+    text-decoration: none;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+img {
+    vertical-align: middle;
+}
 `;
