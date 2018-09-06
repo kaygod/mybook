@@ -56,3 +56,20 @@ export const getBoardList=()=>{
     
     }
 }
+
+const recommendListType=(data)=>({
+    type:constans.GET_RECOMMENDLIST,
+    value:fromJS(data.data)
+})
+
+export const getRecommendList=()=>{
+    return (dispatch)=>{
+        
+        axios.get("./data/recommend.json").then((data)=>{ 
+            dispatch(recommendListType(data));  
+        }).catch(function (error) {
+            console.log(error);
+        })
+    
+    }
+}

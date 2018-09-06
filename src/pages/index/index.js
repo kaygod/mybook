@@ -5,6 +5,8 @@ import {IndexWrapper} from "./style";
 import  CollectionComponent from "./components/collection";
 import NodeListComponent from "./components/nodelist";
 import BoardComponent from "./components/board";
+import QrBoxComponent from "./components/qrbox";
+import RecommendComponent from "./components/recommend";
 import {Link} from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -38,7 +40,15 @@ class App extends Component{
 
                 <div className="gt">
                   
-                <BoardComponent></BoardComponent>
+                   <BoardComponent></BoardComponent>
+
+                   <div>
+                      <QrBoxComponent></QrBoxComponent>
+                   </div>
+
+                   <div>
+                      <RecommendComponent></RecommendComponent>
+                   </div>
 
                 </div>
 

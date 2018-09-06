@@ -8,7 +8,7 @@ class BoardComponent extends Component{
     render(){
         return (          
                 <BoardWapper>
-                     <div class="board">
+                     <div className="board">
                             {
                                 this.props.boardlist.map((v)=>{
                                     return (                                      
