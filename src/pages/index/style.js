@@ -195,8 +195,7 @@ export const RecommendWapper = styled.div`
                 color: #969696;
                 i{
                     display: inline-block;
-                    line-height: 1;
-                    transition: .5s ease;
+                    line-height: 1;               
                     font-size: 14px;
                     margin-right: 5px;
                 }

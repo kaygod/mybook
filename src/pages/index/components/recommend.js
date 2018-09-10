@@ -2,7 +2,7 @@ import React ,{Component} from "react";
 import {RecommendWapper} from "../style";
 import {actions} from "../store/index";
 import {connect} from "react-redux";
-
+import RotateComponent from "../../../components/rotate";
 class RecommendComponent extends Component{
     
     render(){
@@ -10,25 +10,29 @@ class RecommendComponent extends Component{
                 <RecommendWapper>
                   <div className="recommended-authors">
                   <div className="title">
-                    <span>推荐作者</span> 
-                    <a className="page-change">
-                    <i className="iconfont">&#xe64e;</i>
-                        换一批
-                    </a>
+                    <span>推荐作者</span>
+                     <div className="page-change">
+                       <RotateComponent clickEvent={()=>{this.nextPage(this)}}></RotateComponent>
+                     </div> 
                   </div>
                    <ul className="list">
                      
                      {this.renderList()}
                                     
                    </ul>
-                    <a className="find-more">
-                       查看全部
-                       <i className="iconfont">&#xe6e9;</i>
-                    </a>  
+                  
                   </div>                
                 </RecommendWapper>
         ) 
     }
+
+    nextPage(_this){
+      
+        
+
+    }
+
+   
 
     renderList(){
      return this.props.list.map((v,index)=>{
