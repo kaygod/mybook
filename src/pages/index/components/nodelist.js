@@ -5,7 +5,6 @@ import { actions } from "../store";
 
 class NodeListComponent extends Component{
 
-
     getNodeList(){
         let { nodelist } =this.props;
         return nodelist.map((item)=>{
@@ -14,7 +13,7 @@ class NodeListComponent extends Component{
 
               return (
                 
-                <li className="have-img" key={item.get("id")}>
+                <li className="have-img" key={item.get("id")} onClick={()=>{this.jump(item)}}>
                     <a className="wrap-img" target="_blank">
                     <img className="img-blur-done" src={item.get("img")} alt="120" />
                     </a>
@@ -36,7 +35,7 @@ class NodeListComponent extends Component{
               )
             }else{
               return (
-                 <li key={item.get("id")}>
+                 <li key={item.get("id")} onClick={()=>{this.jump(item)}}>
                     <div className="content">
                         <a className="title" target="_blank">{item.get("title")}</a>
                         <p className="abstract">
@@ -71,6 +70,10 @@ class NodeListComponent extends Component{
     componentDidMount(){
         this.props.getList();
     }
+
+    jump(item){
+        this.props.history.push(`/detail/${item.get("id")}`);
+    }
        
   }
 
@@ -84,7 +87,7 @@ class NodeListComponent extends Component{
         dispatch(actions.getNodeList());
     }
   })
-  
+
   export default connect(mapState, mapDispatch)(NodeListComponent);
 
 

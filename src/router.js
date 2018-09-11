@@ -13,7 +13,7 @@ class App extends Component {
                 <div>
                   <Route exact path="/" component={IndexPage}/>
                   <Route path="/index" component={IndexPage}/>
-                  <Route path="/detail" component={DetailPage}/>
+                  <Route path="/detail/:id" component={DetailPage}/>
                 </div>
               </BrowserRouter>
              </Provider>

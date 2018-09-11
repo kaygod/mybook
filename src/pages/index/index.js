@@ -10,6 +10,7 @@ import RecommendComponent from "./components/recommend";
 import {Link} from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class App extends Component{
   
@@ -30,7 +31,7 @@ class App extends Component{
                 {/*渲染列表数据*/}
                 <div>
                     
-                 <NodeListComponent/>
+                 <NodeListComponent history={this.context.router.history}/>
                 
                 </div> 
                 
@@ -68,5 +69,10 @@ const mapDispatch = (dispatch) => ({
 	
 	}
 });
+
+App.contextTypes = {
+  router: PropTypes.object.isRequired
+}
+
 
 export default connect(null, null)(App);

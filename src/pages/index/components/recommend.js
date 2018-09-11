@@ -4,6 +4,13 @@ import {actions} from "../store/index";
 import {connect} from "react-redux";
 import RotateComponent from "../../../components/rotate";
 class RecommendComponent extends Component{
+
+    constructor(){
+       super();
+       this.state={
+         page:1
+       }
+    } 
     
     render(){
         return (          
@@ -17,10 +24,12 @@ class RecommendComponent extends Component{
                   </div>
                    <ul className="list">
                      
-                     {this.renderList()}
+                     {this.renderList(this.state.page)}
                                     
                    </ul>
-                  
+
+                   <a className="find-more">
+                     查看全部<i className="iconfont">&#xe6e9;</i></a>                  
                   </div>                
                 </RecommendWapper>
         ) 
@@ -28,14 +37,30 @@ class RecommendComponent extends Component{
 
     nextPage(_this){
       
+      let total_page=Math.ceil(_this.props.list.size/5);
+     
+      let page=_this.state.page+1;
+      
+      if(page>total_page){
+        page=1;
+      }
+      
+      _this.setState({
+         page:page
+      }) 
+
+      _this.renderList(page);
         
 
     }
 
    
 
-    renderList(){
-     return this.props.list.map((v,index)=>{
+    renderList(page){
+     const index=(page-1)*5;
+     const arr=this.props.list.slice(index,index+5);
+
+     return arr.map((v,index)=>{
         return (
             <li key={index}>
                 <a className="avatar">
