@@ -131,7 +131,7 @@ class HeaderComponent extends Component{
                        <div className="clear"></div>
                    </div>
                    <div className="logo">
-                      <img src="./img/12.png"/>
+                      <img src="/img/12.png"/>
                    </div>
                    <div className="other">
                       <a className="regist">注册</a>

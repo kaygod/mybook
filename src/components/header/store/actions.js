@@ -11,7 +11,7 @@ const keywordType=(data)=>({
 export const getKeyWords=()=>{//获取头部的关键词
    return (dispatch)=>{
     
-    axios.get("./data/keyword.json").then((data)=>{ 
+    axios.get("/data/keyword.json").then((data)=>{ 
         dispatch(keywordType(data));  
     }).catch(function (error) {
         console.log(error);
