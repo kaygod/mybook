@@ -8,6 +8,12 @@ export const HeaderWrapper = styled.div`;
           height:58px;
           background-color:#fff;
           border-bottom:1px solid #f0f0f0;
+          position: fixed;
+          right: 0;
+          left: 0;
+          z-index: 1030;
+          top: 0;
+          border-width: 0 0 1px;
       }
 
       .width-limit{

@@ -17,7 +17,7 @@ class App extends Component{
   render(){
       return (
           <IndexWrapper>
-            <HeaderComponent/>
+            <HeaderComponent history={this.context.router.history}/>
             <div className="main">
                 
                 <div className="lt">
@@ -52,6 +52,8 @@ class App extends Component{
                    </div>
 
                 </div>
+
+                <div className="clear"></div>
 
             </div>                
           </IndexWrapper>

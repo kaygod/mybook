@@ -18,6 +18,7 @@ class HeaderComponent extends Component{
       }
       this.handleClick= this.handleClick.bind(this);
       this.update= this.update.bind(this);
+      this.jump= this.jump.bind(this);
     }
 
     handleClick(type){
@@ -102,6 +103,10 @@ class HeaderComponent extends Component{
     componentDidMount(){
         this.props.renderKeyWord();
     }
+
+    jump(){
+        this.props.history.push(`/index`);
+    }
     
     render(){
        return (
@@ -110,7 +115,7 @@ class HeaderComponent extends Component{
                    <div className="mainContent">
                        <div className="lt">
                           <ul className="left-section">
-                              <li className="current"><a><i className="iconfont">&#xe69b;</i>首页</a></li>
+                              <li className="current"><a onClick={this.jump}><i className="iconfont">&#xe69b;</i>首页</a></li>
                               <li><a><i className="iconfont">&#xe6f0;</i>下载APP</a></li>
                               <li>
                                    <form className={this.state.isFocus==2?"search":"search active"}>
@@ -130,7 +135,7 @@ class HeaderComponent extends Component{
                        </div>
                        <div className="clear"></div>
                    </div>
-                   <div className="logo">
+                   <div className="logo" onClick={this.jump}>
                       <img src="/img/12.png"/>
                    </div>
                    <div className="other">

@@ -4,7 +4,7 @@ export const IndexWrapper = styled.div`
 
       .main{         
         width:960px;
-        margin:40px auto;
+        margin:94px auto;
         
         .lt{
             width:625px;

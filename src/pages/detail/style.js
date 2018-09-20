@@ -4,7 +4,7 @@ export const DetailWrapper = styled.div`
 
       .main{         
         width:960px;
-        margin:40px auto;
+        margin:56px auto;
         
         .lt{
             width:625px;
@@ -113,5 +113,27 @@ export const ContentWapper = styled.div`
       }
 
  }
+
+`;
+
+
+export const ScannerWapper = styled.div`
+
+    .web-note-ad-fixed {
+        position: fixed;
+        top: 80px;
+        right: 50%;
+        margin-right: -560px;
+        width: 180px;
+        height: 260px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 50%;
+
+        img{
+            width:100%;
+            height:100%;
+        }
+    }
 
 `;

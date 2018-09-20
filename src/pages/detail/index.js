@@ -6,6 +6,8 @@ import {DetailWrapper} from "./style";
 import HeaderComponent from "../../components/header";
 import AuthorComponent from "./components/author";
 import ContentComponent from "./components/content";
+import ScannerComponent from "./components/scanner";
+import PropTypes from 'prop-types';
 
 class DetailPage extends Component{
 
@@ -16,13 +18,13 @@ class DetailPage extends Component{
   render(){
       return (
         <DetailWrapper>
-        <HeaderComponent/>
+        <HeaderComponent history={this.context.router.history}/>
         <div className="main">
             
             <div className="lt">
                 
-                <div class="article">
-                     <h1 class="title">一个出轨男人的真实故事</h1>
+                <div className="article">
+                     <h1 className="title">一个出轨男人的真实故事</h1>
 
                      <div>
                         <AuthorComponent/>
@@ -38,9 +40,12 @@ class DetailPage extends Component{
             </div>
 
             <div className="gt">
-            
+             
+            <ScannerComponent></ScannerComponent>
 
             </div>
+
+            <div className="clear"></div>
 
         </div>                
       </DetailWrapper>              
@@ -63,6 +68,10 @@ const mapDispatch = (dispatch) => ({
 	
 	}
 });
+
+DetailPage.contextTypes = {
+  router: PropTypes.object.isRequired
+}
 
 
 export default withRouter(connect(null, null)(DetailPage));
